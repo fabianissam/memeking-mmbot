@@ -1,19 +1,20 @@
 from mattermostdriver import Driver
 import datetime
 from dateutil.relativedelta import relativedelta
+import os
 
 ALLOWED_EMOJIS = ['kekw','kekl']
 
-driver = Driver({'token':'sg73j8ofgpnpxknayygem5ofdy','scheme':'http','port':8065,'url':'localhost','base_path':'/api/v4'})
+driver = Driver({'token':os.environ.get('MM_TOKEN'),'scheme':'http','port':8065,'url':'localhost','base_path':'/api/v4'})
 
 driver.login()
-# print(driver.teams.)
+
 team_id = driver.teams.get_user_teams('me')[0]['id']
-#print(driver.teams.)
+
 channel_id = driver.channels.get_channel_by_name(team_id=team_id, channel_name='OT-Wissensaustausch')['id']
 
 
-# Beispiel: Nur Posts ab 1. Mai 2025
+
 min_date = datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta(months=1) # datetime.datetime(2025, 5, 1)
 since_timestamp = int(min_date.timestamp() * 1000)  # ms
 
@@ -21,7 +22,7 @@ posts = driver.posts.get_posts_for_channel(
     channel_id=channel_id,
     params={'page':0, 'per_page':10000, 'since': since_timestamp}
 )
-#print(json.dumps(posts, indent=2))
+
 
 user_reaction_map = {}
 
