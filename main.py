@@ -13,8 +13,6 @@ team_id = driver.teams.get_user_teams('me')[0]['id']
 
 channel_id = driver.channels.get_channel_by_name(team_id=team_id, channel_name='OT-Wissensaustausch')['id']
 
-
-
 min_date = datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta(months=1) # datetime.datetime(2025, 5, 1)
 since_timestamp = int(min_date.timestamp() * 1000)  # ms
 
@@ -22,7 +20,6 @@ posts = driver.posts.get_posts_for_channel(
     channel_id=channel_id,
     params={'page':0, 'per_page':10000, 'since': since_timestamp}
 )
-
 
 user_reaction_map = {}
 
