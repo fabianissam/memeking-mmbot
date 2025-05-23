@@ -18,7 +18,7 @@ team_name = driver.teams.get_user_teams('me')[0]['name']
 
 channel_id = driver.channels.get_channel_by_name(team_id=team_id, channel_name='OT-Wissensaustausch')['id']
 
-min_date = datetime.datetime(2025, 5, 1)#datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta(months=1) # datetime.datetime(2025, 5, 1)
+min_date = datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta(months=1) # datetime.datetime(2025, 5, 1)
 since_timestamp = int(min_date.timestamp() * 1000)  # ms
 
 posts = driver.posts.get_posts_for_channel(
