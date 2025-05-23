@@ -66,7 +66,7 @@ for user in user_reaction_map:
 message += '\nHerzlichen Glückwunsch an '
 message += driver.users.get_user(list(user_reaction_map.keys())[0])['username'] 
 message += ' du bist der Memeking diesen Monats!'
-message += '\n\nHier ist das Meme des Monats:\n\n'
+message += '\n\nHier ist das Meme des Monats mit ' + reaction_count +' Reaktionen :\n\n'
 message += os.getenv("MM_SCHEME")+'://'+os.getenv('MM_HOST')+':' +os.getenv("MM_PORT")+ '/'+ team_name + '/pl/' + best_meme
 
 
