@@ -1,2 +1,3 @@
 mattermostdriver
 python-dateutil
+python-dotenv
